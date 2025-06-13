@@ -37,7 +37,6 @@ func FramerFromUint8(v uint8) Framer {
 	if p.FrameType == CONNACK {
 		p.HasServerVersion = (v & 0x01) > 0
 	}
-
 	return p
 }
 
@@ -83,21 +82,6 @@ func (f Framer) String() string {
 	return fmt.Sprintf("packetType: %s remainingLength:%d NoPersist:%v redDot:%v syncOnce:%v DUP:%v", f.GetFrameType().String(), f.RemainingLength, f.NoPersist, f.RedDot, f.SyncOnce, f.DUP)
 }
 
-// type Setting struct {
-// 	Receipt bool // 消息已读回执，此标记表示，此消息需要已读回执
-// 	Signal  bool // 是否采用signal加密
-// }
-
-// func (s Setting) ToUint8() uint8 {
-// 	return uint8(encodeBool(s.Receipt) << 7)
-// }
-
-//	func SettingFromUint8(v uint8) Setting {
-//		s := Setting{}
-//		s.Receipt = (v >> 7 & 0x01) > 0
-//		return s
-//	}
-//
 // FrameType 包类型
 type FrameType uint8
 
@@ -110,7 +94,7 @@ const (
 	SENDACK                     // 收到消息确认的报文(s2c)
 	RECV                        // 收取消息(s2c)
 	RECVACK                     // 收取消息确认(c2s)
-	PING                        //ping请求
+	PING                        // ping请求
 	PONG                        // 对ping请求的相应
 	DISCONNECT                  // 请求断开连接
 	SUB                         // 订阅

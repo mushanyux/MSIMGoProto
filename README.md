@@ -11,3 +11,9 @@
 
 ## encoder
 encoder类和将 byte[], int, int8 等等类型写入到encoder类中的方法
+
+## send
+发送消息
+
+## sendack
+发送消息确认
